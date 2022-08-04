@@ -18,14 +18,14 @@ module Accessors
 
         define_method("#{name}=".to_sym) do |value|
           v = instance_variable_get("@#{name}_history")
-          v ||= [nil]
+          v ||= []
           v << value
           instance_variable_set("@#{name}_history", v)
           instance_variable_set(var_name, value)
         end
 
         define_method("#{name}_history".to_sym) do
-          instance_variable_get("@#{name}_history") || [nil]
+          instance_variable_get("@#{name}_history") || []
         end
       end
     end
@@ -63,10 +63,10 @@ t.d = 6
 t.a = 6
 t.a = 9
 t.a = 8
-t.a_history
+puts t.a_history
 
 t1.a = 1
 t1.a = 2
 t1.a = 3
-t1.a_history
+puts t1.a_history
 # puts t.instance_variables
