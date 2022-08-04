@@ -11,7 +11,7 @@ class Train
   @@all = []
   def initialize(number)
     @number = number
-    validate number, :format, VALIDATION
+    # validate number, :format, VALIDATION
     validate!
     # puts valid?
     @size = []

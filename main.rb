@@ -200,7 +200,7 @@ class MainClass
       vagon ||= VagonPassanger.new(seats)
     when 2
       puts MESSAGE[:enter_capacity_vagon]
-      capacity = gets.chomp.to_i
+      capacity = gets.chomp
       vagon ||= VagonCargo.new(capacity)
     else
       puts MESSAGE[:error_vagon_type]

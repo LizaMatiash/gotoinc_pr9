@@ -4,6 +4,8 @@
 class CargoTrain < Train
   attr_accessor :type
 
+  validate :number, :format, VALIDATION
+
   @@all_cargo_trains = []
 
   def initialize(number)

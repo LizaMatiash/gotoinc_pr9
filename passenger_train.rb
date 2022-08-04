@@ -4,6 +4,8 @@
 class PassangerTrain < Train
   attr_accessor :type
 
+  validate :number, :format, VALIDATION
+
   @@all_passanger_trains = []
 
   def initialize(number)

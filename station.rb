@@ -8,12 +8,12 @@ class Station
   attr_accessor :name
 
   VALIDATION = /^[A-Z]{1}[a-z]+$/.freeze
+  validate :name, :format, VALIDATION
 
   @@all = []
 
   def initialize(name)
     @name = name
-    validate name, :format, VALIDATION
     validate!
     @train = {}
     @@all << self
@@ -45,7 +45,7 @@ class Station
     train.each { |k, _v| puts k if train[k][:type] == 'passanger' }
   end
 
-  def send(number)
+  def send_train(number)
     train.delete(number)
   end
 
