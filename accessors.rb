@@ -51,22 +51,22 @@ class Test
   attr_accessor_with_history :as, :hff
 end
 
-Test.attr_accessor_with_history :a, :i
-t = Test.new
-t1 = Test.new
-
-Test.strong_attr_acessor(:d, Integer)
-Test.strong_attr_acessor(:hd, String)
-t.hd = 'hh'
-t.d = 6
-
-t.a = 6
-t.a = 9
-t.a = 8
-puts t.a_history
-
-t1.a = 1
-t1.a = 2
-t1.a = 3
-puts t1.a_history
+# Test.attr_accessor_with_history :a, :i
+# t = Test.new
+# t1 = Test.new
+#
+# Test.strong_attr_acessor(:d, Integer)
+# Test.strong_attr_acessor(:hd, String)
+# t.hd = 'hh'
+# t.d = 6
+#
+# t.a = 6
+# t.a = 9
+# t.a = 8
+# puts t.a_history
+#
+# t1.a = 1
+# t1.a = 2
+# t1.a = 3
+# puts t1.a_history
 # puts t.instance_variables

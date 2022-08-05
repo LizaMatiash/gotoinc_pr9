@@ -8,26 +8,26 @@ module Validation
   end
 
   module ClassMethods
-    attr_accessor :all_validates
+    attr_accessor :all_validates, :message
     def validate(atr, type, arg= '')
 
 
       validation = "#{atr}_#{type}".to_sym
-
-      puts validation
-
       # presence
       case type
       when :presence
+        self.message ||= 'Error. Name can`t be nil'
         define_method(validation) do
           !instance_variable_get("@#{atr}").nil?
         end
       when :format
+        self.message ||= "Error. Wrong name format. You need: #{arg}".to_s
         define_method(validation) do
           # puts instance_variable_get("@#{atr}")
           instance_variable_get("@#{atr}") =~ arg
         end
       when :type
+        self.message ||= "Error. Wrong variable type. You need: #{arg}".to_s
         define_method(validation) do
           instance_variable_get("@#{atr}").instance_of?(arg)
         end
@@ -50,7 +50,8 @@ module Validation
     def validate!
       # validate
       self.class.all_validates.each do |valid|
-        raise "Number can't be that" unless send(valid)
+        # puts
+        raise puts self.class.message unless send(valid)
       end
       true
     end
